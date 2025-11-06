@@ -39,20 +39,20 @@ pipeline {
                 '''
             }
         }
-        stage('e2e') {
+
+        stage('E2E') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.56.1-noble'
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
                 }
             }
 
             steps {
                 sh '''
-                    #test -f build/index.html
-                    #npm test
-                    npm install -g serve
-                    npm -s build
+                    npm install serve
+                    node_modules/.bin/serve -s build &
+                    sleep 10
                     npx playwright test
                 '''
             }
@@ -61,7 +61,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-results/junit.xml'
+            junit 'jest-results/junit.xml'
         }
     }
 }
