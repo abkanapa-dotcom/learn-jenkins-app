@@ -3,6 +3,7 @@ pipeline {
 
     stages {
         //This si Build Stage
+        /*
         stage('Build') {
             agent {
                 docker {
@@ -10,7 +11,7 @@ pipeline {
                     reuseNode true
                 }
             }
-            /*
+            
             steps {
                 echo 'Hello Abhilash'
                 sh '''
@@ -42,7 +43,7 @@ pipeline {
             
         }
 
-    }
+    
     post {
         always {
             junit 'test-results/junit.xml'
