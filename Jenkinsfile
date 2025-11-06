@@ -23,6 +23,7 @@ pipeline {
                 '''
                 
             }
+        }
         
         //This is Test Stage
         stage ('Test') {
@@ -48,9 +49,9 @@ pipeline {
         always {
             junit 'test-results/junit.xml'
            sh '''
-           # npm test
+           npm test
            '''
         }
     }
 }
-}
+
