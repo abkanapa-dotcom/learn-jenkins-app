@@ -24,7 +24,7 @@ pipeline {
                 '''
                 
             }*/
-        }
+        
         //This is Test Stage
         stage ('Test') {
             agent {
@@ -42,6 +42,7 @@ pipeline {
                 
             
         }
+    }
 
     
     post {
