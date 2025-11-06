@@ -36,6 +36,7 @@ pipeline {
                 sh '''
                     #test -f build/index.html
                     npm test
+                    junit 'jest-results/junit.xml'
                 '''
             }
         }
@@ -54,6 +55,7 @@ pipeline {
                     node_modules/.bin/serve -s build &
                     sleep 10
                     npx playwright test
+                    junit 'jest-results/junit.xml'
                 '''
             }
         }
